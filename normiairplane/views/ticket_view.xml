@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- normiairplane.ticket tree view -->
+    <record id="normiairplane_ticket_view_tree" model="ir.ui.view">
+        <field name="name">Ticket Tree</field>
+        <field name="model">normiairplane.ticket</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="passenger_id"/>
+                <field name="purchase_date"/>
+                <field name="flight_id"/>
+                <field name="gender"/>
+                <field name="nationality"/>
+                <field name="price"/>
+                <field name="state" 
+                       decoration-warning="state == 'booking'"
+                       decoration-info="state == 'confirm'"
+                       decoration-success="state == 'done'"
+                       widget="badge"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <!-- normiairplane.ticket form view -->
+    <record id="normiairplane_ticket_view_form" model="ir.ui.view">
+        <field name="name">Ticket Form</field>
+        <field name="model">normiairplane.ticket</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button name="confirm_button" type="object" string="Confirm" class="btn btn-primary" states="booking" confirm="Mohon periksa data anda kembali karena setelah konfirmasi pemesanan tiket, anda tidak dapat melakukan perubahan data pribadi anda lagi."/>
+                    <button name="done_button" type="object" string="Done" class="btn btn-primary" states="confirm" confirm="Apakah seluruh data anda sudah benar? Jika iya, silahkan konfirmasi pemesanan tiket anda"/>
+                    <button name="cancel_button" type="object" string="Cancel" class="btn btn-warning" states="confirm" confirm="Apakah anda yakin ingin cancel tiket anda?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="booking,confirm,done"/>
+                </header>
+                <sheet>
+                    <group name="ids" string="Flight and Passenger ID">
+                        <field name="name" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                        <field name="purchase_date" attrs="{'readonly': [('state', '!=', 'none')]}" />
+                        <field name="passenger_id" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                        <field name="flight_id" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                        <field name="total" attrs="{'readonly': [('state', '!=', 'none'), ('state', '!=', 'booking')]}"/>
+                    </group>
+                    <group name="detail" string="Ticket Detail">
+                        <field name="gender" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                        <field name="nationality" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                        <field name="passport" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                        <field name="price" attrs="{'readonly': [('state', '!=', 'none')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- normiairplane.ticket action window -->
+    <record id="normiairplane_ticket_action" model="ir.actions.act_window">
+        <field name="name">Ticket</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">normiairplane.ticket</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

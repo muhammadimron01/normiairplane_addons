@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <template id="report_ticket_wizzard_pdf_tmp">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h2><b>TICKET REVENUE REPORT</b></h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span>Passenger Name</span>
+                                </th>
+                                <th>
+                                    <span>Purchase Date</span>
+                                </th>
+                                <th>
+                                    <span>Total Payment</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="income" t-as="line">
+                            <tr>
+                                <td>
+                                    <span t-esc="line['passenger_id']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['purchase_date']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['price']"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td colspan="2">
+                                <p><b>TOTAL</b></p>
+                            </td>
+                            <td>
+                                <b><span t-esc="total"/></b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

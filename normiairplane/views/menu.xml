@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="normiairplane_menu_root" 
+              name="Normi Airplane" 
+              sequence="10"/>
+    
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="normiairplane_flight_menu_act" 
+              name="Flight" 
+              parent="normiairplane_menu_root" 
+              action="normiairplane_flight_action" 
+              sequence="10"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="normiairplane_passenger_menu_act" 
+              name="Passenger" 
+              parent="normiairplane_menu_root"
+              action="normiairplane_passenger_action" 
+              sequence="20"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="normiairplane_ticket_menu_act" 
+              name="Ticket" 
+              parent="normiairplane_menu_root" 
+              action="normiairplane_ticket_action" 
+              sequence="30"/>
+    
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="normiairplane_report_menu_categ" 
+              name="Report" 
+              parent="normiairplane_menu_root" 
+              sequence="40"/>
+
+</odoo>

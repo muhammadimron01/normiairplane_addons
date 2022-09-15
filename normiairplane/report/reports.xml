@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <record id="report_ticket_wizzard_pdf" model="ir.actions.report">
+        <field name="name">Ticket Incomes</field>
+        <field name="model">normiairplane.reportticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">normiairplane.report_ticket_wizzard_pdf_tmp</field>
+        <field name="report_file">normiairplane.report_ticket_wizzard_pdf_tmp</field>
+        <field name="binding_model_id" ref="model_normiairplane_reportticket"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

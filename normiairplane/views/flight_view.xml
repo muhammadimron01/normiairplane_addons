@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- normiairplane.flight tree view -->
+    <record id="normiairplane_flight_view_tree" model="ir.ui.view">
+        <field name="name">Flight Tree</field>
+        <field name="model">normiairplane.flight</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="source"/>
+                <field name="destination"/>
+                <field name="take_of"/>
+                <field name="seat"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- normiairplane.flight form view -->
+    <record id="normiairplane_flight_view_form" model="ir.ui.view">
+        <field name="name">Flight Form</field>
+        <field name="model">normiairplane.flight</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group name="flight_code" string="Flight Code">
+                        <field name="name"/>
+                    </group>
+                    <group name="flight_detail" string="Flight Details">
+                        <field name="source"/>
+                        <field name="destination"/>
+                        <field name="take_of"/>
+                        <field name="seat"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- normiairplane.flight action window -->
+    <record id="normiairplane_flight_action" model="ir.actions.act_window">
+        <field name="name">Flight</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">normiairplane.flight</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
